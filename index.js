@@ -2,30 +2,33 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const mysql = require('mysql')
 
-var config = {
+const { Pool } = require('pg')
+// should replace these with environment variables
+const pool = new Pool({
 	host: 'localhost',
-	user: 'root',
-	password: 'Gr33nstripe',
-	database: 'test'
-}
-
-const pool = mysql.createPool(config)
+    user: 'postgres',
+    password: 'Gr33nstripe',
+    database: 'testdb',
+    max: 20,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000
+})
 
 app.use(express.static('public'))
 
 app.get('/', (req, res) => res.sendFile('/index.html', {root: __dirname}))
+app.get('/search', (req, res) => res.sendFile('/search.html', {root: __dirname}))
 app.get('/api/search/:searchWord', (req, res) => {
 	var searchWord = req.params.searchWord
 	console.log(searchWord)
-	var sqlQuery = 'SELECT * FROM food WHERE MATCH (Shrt_Desc) AGAINST ("' + searchWord + '")'
 
-	pool.query(sqlQuery, (err, rows, fields) => {
-		if (err) throw err
-
-		res.send(rows)
-	})
+	// searchWord must be enclosed in single quotes
+	var sqlQuery = "SELECT * FROM food WHERE shrt_desc % '"+searchWord+"'"
+	
+	pool.query(sqlQuery)
+		.then((response) => res.send(response.rows))
+		.catch((err) => console.error('Error executing query', err.stack))
 })
 
 // backtick used instead of quotes for temlate literals

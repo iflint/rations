@@ -1,0 +1,97 @@
+
+@font-face {
+	font-family: 'NationalPark';
+	src: url('media/NationalPark/NationalPark-Regular.otf') format('opentype');
+}
+
+
+html, body {
+	margin: 0;
+	font-family: 'NationalPark';
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#full {
+	max-width: 50em;
+	margin: auto;
+}
+@media (max-width: 600px) {
+	#full {
+		padding: .5em;
+	}
+}
+#logo {
+	font-size: 2em;
+	margin-top: .5em;
+	margin-bottom: 1em;
+	padding-left: 1.5em;
+	background-image: url(media/can.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+input[name='search'] {
+	width: 100%;
+	height: 2em;
+	font-size: 1.2em;
+	padding-left: 3em;
+	background: transparent;
+	background-image: url(media/search.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	border: none;
+	border-bottom: solid .1em;
+}
+input[name='search']:focus {
+    outline-width: 0;
+}
+#macroSort {
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	color: white;
+}
+.bar {
+	display: flex;
+	height: 1.5em;
+}
+.prot {
+	background: rgb(100,186,203);
+}
+.carb {
+	background: rgb(238,213,126);
+}
+.fat {
+	background: rgb(203,117,100);
+}
+.inner {
+	box-sizing: border-box;
+	padding-left: 1em;
+	white-space: nowrap;
+	flex: 1;
+}
+@media (max-width: 600px) {
+	.inner {
+		padding-left: .2em;
+	}
+}
+.foodTitle {
+	margin-bottom: 1em;
+	height: 1em;
+}
+
+#content {
+	width: 100%;
+	margin-bottom: 2em;
+}
+#footer {
+	font-size: 1.2em;
+	border-top: solid .1em;
+	background: white;
+	left: 0em;
+	bottom: 0em;
+	width: 100%;
+	height: 5em;
+}
