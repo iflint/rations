@@ -23,10 +23,12 @@ a {
 		padding: .5em;
 	}
 }
+.sectionGap {
+	margin-bottom: 2em;
+}
 #logo {
 	font-size: 2em;
 	margin-top: .5em;
-	margin-bottom: 1em;
 	padding-left: 1.5em;
 	background-image: url(media/can.png);
 	background-size: contain;
@@ -47,12 +49,7 @@ input[name='search'] {
 input[name='search']:focus {
     outline-width: 0;
 }
-#macroSort {
-	width: 100%;
-	margin-top: 1em;
-	margin-bottom: 2em;
-	color: white;
-}
+
 .bar {
 	display: flex;
 	height: 1.5em;
@@ -66,6 +63,12 @@ input[name='search']:focus {
 .fat {
 	background: rgb(203,117,100);
 }
+.protCarb {
+	background-image: linear-gradient(45deg,rgb(100,186,203),rgb(238,213,126));
+}
+.protFat {
+	background-image: linear-gradient(45deg,rgb(100,186,203),rgb(203,117,100));
+}
 .inner {
 	box-sizing: border-box;
 	padding-left: 1em;
@@ -77,15 +80,7 @@ input[name='search']:focus {
 		padding-left: .2em;
 	}
 }
-.foodTitle {
-	margin-bottom: 1em;
-	height: 1em;
-}
 
-#content {
-	width: 100%;
-	margin-bottom: 2em;
-}
 #footer {
 	font-size: 1.2em;
 	border-top: solid .1em;
@@ -94,4 +89,70 @@ input[name='search']:focus {
 	bottom: 0em;
 	width: 100%;
 	height: 5em;
+}
+
+/* specific to index page */
+
+#searchTitle {
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 4em;
+}
+#mainSearch {
+	margin-top: 4em;
+}
+#collections {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 2em repeat(3, 10em);
+	grid-gap: 1em;
+}
+#recipes {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 2em repeat(4, 10em);
+	grid-gap: 1em;
+}
+#blog .gridItem {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	min-height: 20em;
+}
+.subtitle {
+	font-size: 1.5em;
+	grid-column: 1/-1;
+}
+.gridItem {
+	min-width: 1em;
+	min-height: 1em;
+	display: flex;
+	flex-direction: column;
+}
+.gridItemTop {
+	flex: 1;
+	flex-grow: 10;
+}
+.gridItemBottom {
+	flex: 1;
+	background: rgba(255,255,255,0.5);
+	box-sizing: border-box;
+	padding: 1em;
+}
+
+/* specific to search page */
+
+#macroSort {
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	color: white;
+}
+.foodTitle {
+	margin-bottom: 1em;
+	height: 1em;
+}
+
+#content {
+	width: 100%;
+	margin-bottom: 2em;
 }

@@ -18,7 +18,7 @@ const pool = new Pool({
 app.use(express.static('public'))
 
 app.get('/', (req, res) => res.sendFile('/index.html', {root: __dirname}))
-app.get('/search', (req, res) => res.sendFile('/search.html', {root: __dirname}))
+app.get('/search/:food', (req, res) => res.sendFile('/search.html', {root: __dirname}))
 app.get('/api/search/:searchWord', (req, res) => {
 	var searchWord = req.params.searchWord
 	console.log(searchWord)
