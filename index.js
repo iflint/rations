@@ -15,10 +15,12 @@ const pool = new Pool({
     connectionTimeoutMillis: 2000
 })
 
-app.use(express.static('public'))
+app.use(express.static(__dirname+'/public'))
 
 app.get('/', (req, res) => res.sendFile('/index.html', {root: __dirname}))
-app.get('/search/:food', (req, res) => res.sendFile('/search.html', {root: __dirname}))
+app.get('/search/:itemId', (req, res) => res.sendFile('/search.html', {root: __dirname}))
+app.get('/collections/:collectionId', (req, res) => res.sendFile('/collection.html', {root: __dirname}))
+app.get('/blog/:postId', (req, res) => res.sendFile('/blog/'+req.params.postId+'.html', {root: __dirname}))
 app.get('/api/search/:searchWord', (req, res) => {
 	var searchWord = req.params.searchWord
 	console.log(searchWord)

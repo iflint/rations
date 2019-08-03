@@ -13,6 +13,9 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+}
 
 #full {
 	max-width: 50em;
@@ -30,7 +33,7 @@ a {
 	font-size: 2em;
 	margin-top: .5em;
 	padding-left: 1.5em;
-	background-image: url(media/can.png);
+	background-image: url(/media/can.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -40,7 +43,7 @@ input[name='search'] {
 	font-size: 1.2em;
 	padding-left: 3em;
 	background: transparent;
-	background-image: url(media/search.png);
+	background-image: url(/media/search.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	border: none;
@@ -155,4 +158,10 @@ input[name='search']:focus {
 #content {
 	width: 100%;
 	margin-bottom: 2em;
+}
+
+/* blog post */
+#scatter {
+	height: 50em;
+	width: 100%;
 }
