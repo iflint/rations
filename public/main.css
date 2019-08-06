@@ -107,7 +107,7 @@ input[name='search']:focus {
 #collections {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: 2em repeat(3, 10em);
+	grid-template-rows: 2em repeat(2, 10em);
 	grid-gap: 1em;
 }
 #recipes {
@@ -164,4 +164,14 @@ input[name='search']:focus {
 #scatter {
 	height: 50em;
 	width: 100%;
+}
+.caption {
+	color: gray;
+	text-align: center;
+}
+
+/* collection page*/
+
+#collectionStats {
+	
 }
