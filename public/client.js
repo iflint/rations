@@ -34,7 +34,7 @@ var renderBars = function(data, node) {
 
 var searchFood = function() {
 	if (event.keyCode == '13') {
-		window.location.href = 'http://localhost:3000/search/' + document.querySelector('input[name="search"]').value
+		window.location.href = 'http://localhost:8000/search/' + document.querySelector('input[name="search"]').value
 	}
 }
 

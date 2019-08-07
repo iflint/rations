@@ -1,7 +1,6 @@
 
 const express = require('express')
 const app = express()
-const port = 3000
 
 const { Pool } = require('pg')
 // should replace these with environment variables
@@ -18,7 +17,10 @@ const pool = new Pool({
 app.use(express.static(__dirname+'/public'))
 
 var allCollections = {
-	highProtein : [10182, 22118, 1001]
+	highProtein : {
+		sort: "ORDER BY protein_g/energ_kcal DESC",
+		data: [1033,16156,1295,11450,16122,15085,5306,12065]
+	}
 }
 
 app.get('/', (req, res) => res.sendFile('/index.html', {root: __dirname}))
@@ -41,7 +43,7 @@ app.get('/api/collection/:searchWord', (req, res) => {
 	console.log(searchWord)
 
 	// searchWord must be enclosed in single quotes
-	var sqlQuery = "SELECT * FROM food WHERE ndb_no IN ("+allCollections[searchWord].join()+")"
+	var sqlQuery = "SELECT * FROM food WHERE ndb_no IN ("+allCollections[searchWord].data.join()+")" + allCollections[searchWord].sort
 
 	console.log(sqlQuery)
 	
@@ -50,6 +52,10 @@ app.get('/api/collection/:searchWord', (req, res) => {
 		.catch((err) => console.error('Error executing query', err.stack))
 })
 
+let port = process.env.PORT
+if (port == null || port == "") {
+	port = 8000
+}
 // backtick used instead of quotes for temlate literals
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
