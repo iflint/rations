@@ -5,13 +5,16 @@ const app = express()
 const { Pool } = require('pg')
 // should replace these with environment variables
 const pool = new Pool({
-	host: 'localhost',
-    user: 'postgres',
-    password: 'Gr33nstripe',
-    database: 'testdb',
-    max: 20,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 2000
+	// host: 'localhost',
+ //    user: 'postgres',
+ //    password: 'Gr33nstripe',
+ //    database: 'testdb',
+ //    max: 20,
+ //    idleTimeoutMillis: 30000,
+ //    connectionTimeoutMillis: 2000
+
+ 	connectionString: process.env.DATABASE_URL,
+ 	ssl: true
 })
 
 app.use(express.static(__dirname+'/public'))
@@ -51,6 +54,18 @@ app.get('/api/collection/:searchWord', (req, res) => {
 		.then((response) => res.send(response.rows))
 		.catch((err) => console.error('Error executing query', err.stack))
 })
+app.get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect()
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 
 let port = process.env.PORT
 if (port == null || port == "") {

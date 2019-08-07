@@ -32,7 +32,7 @@
 		var searchWord = window.location.href.split('/').pop()
 
 		// initial search query
-		fetch('http://localhost:8000/api/collection/' + searchWord)
+		fetch('/api/collection/' + searchWord)
 			.then(response => response.json())
 			.then(data => {
 				// Here's a list of repos!
